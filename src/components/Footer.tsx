@@ -1,15 +1,17 @@
 
 import React from 'react';
 import { Github, Linkedin } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Footer = () => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-6 border-t border-white/10">
+    <footer ref={ref} className="py-12 px-6 border-t border-white/10">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div>
+        <div className={`grid md:grid-cols-3 gap-8 mb-8 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
+          <div className={`transition-all duration-1000 transform delay-200 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
             <h3 className="text-2xl font-bold text-white mb-4">
               Ankam <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Praneeth</span>
             </h3>
@@ -19,7 +21,7 @@ const Footer = () => {
             </p>
           </div>
           
-          <div>
+          <div className={`transition-all duration-1000 transform delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <nav className="space-y-2">
               <a href="#about" className="block text-gray-400 hover:text-purple-400 transition-colors duration-300">About</a>
@@ -30,7 +32,7 @@ const Footer = () => {
             </nav>
           </div>
           
-          <div>
+          <div className={`transition-all duration-1000 transform delay-600 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
             <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
             <div className="flex gap-4 mb-4">
               <a 
@@ -56,7 +58,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
+        <div className={`pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center transition-all duration-1000 transform delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             © {currentYear} Ankam Praneeth. All rights reserved.
           </p>

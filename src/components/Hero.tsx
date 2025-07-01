@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
   const fullText = 'MERN Stack Developer';
   
   useEffect(() => {
+    setIsVisible(true);
     let index = 0;
     const timer = setInterval(() => {
       if (index <= fullText.length) {
@@ -43,7 +45,7 @@ const Hero = () => {
       </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="animate-fade-in">
+        <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
             Ankam <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Praneeth</span>
           </h1>

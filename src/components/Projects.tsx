@@ -1,85 +1,96 @@
 
 import React from 'react';
-import { Github, ArrowUp } from 'lucide-react';
+import { Github, ExternalLink, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   const projects = [
     {
       id: 1,
       title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce application with user authentication, product management, shopping cart, and payment integration.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop&crop=center',
-      tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe'],
-      github: 'https://github.com/ankampraneeth/ecommerce-platform',
+      description: 'A full-stack e-commerce application built with MERN stack featuring user authentication, product management, shopping cart, and payment integration.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop&crop=center',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'JWT'],
+      github: 'https://github.com/ankampraneeth/ecommerce-app',
       live: 'https://ecommerce-demo.vercel.app',
-      status: 'Completed'
+      featured: true
     },
     {
       id: 2,
       title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, team collaboration features, and deadline tracking.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop&crop=center',
-      tech: ['React', 'Socket.io', 'Node.js', 'MongoDB', 'JWT'],
+      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop&crop=center',
+      technologies: ['React', 'Socket.io', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       github: 'https://github.com/ankampraneeth/task-manager',
       live: 'https://taskmanager-demo.vercel.app',
-      status: 'Completed'
+      featured: true
     },
     {
       id: 3,
-      title: 'Social Media Dashboard',
-      description: 'A comprehensive social media analytics dashboard with data visualization, user engagement metrics, and reporting features.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center',
-      tech: ['React', 'Chart.js', 'Node.js', 'Express', 'MongoDB'],
-      github: 'https://github.com/ankampraneeth/social-dashboard',
-      live: 'https://social-dashboard-demo.vercel.app',
-      status: 'Completed'
+      title: 'Weather Dashboard',
+      description: 'A responsive weather application that provides real-time weather information, forecasts, and interactive maps using external APIs.',
+      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop&crop=center',
+      technologies: ['React', 'OpenWeather API', 'Chart.js', 'CSS3'],
+      github: 'https://github.com/ankampraneeth/weather-app',
+      live: 'https://weather-dashboard-demo.vercel.app',
+      featured: false
     }
   ];
 
   return (
-    <section id="projects" className="py-20 px-6">
+    <section ref={ref} id="projects" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Projects</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto rounded-full"></div>
+          <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
+            Here are some of my recent projects that showcase my skills in full-stack development and problem-solving.
+          </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div 
+            <div
               key={project.id}
-              className="group backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10"
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`group backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+              style={{ transitionDelay: `${index * 200 + 300}ms` }}
             >
+              {project.featured && (
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-xs rounded-full font-semibold">
+                    Featured
+                  </span>
+                </div>
+              )}
+              
               <div className="relative overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 bg-green-500/80 text-white text-sm rounded-full backdrop-blur-sm">
-                    {project.status}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                   {project.title}
                 </h3>
+                
                 <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span 
+                  {project.technologies.map((tech) => (
+                    <span
                       key={tech}
-                      className="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30"
+                      className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 rounded-full text-xs border border-cyan-500/20"
                     >
                       {tech}
                     </span>
@@ -87,21 +98,22 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex gap-3">
-                  <Button 
-                    size="sm"
-                    className="flex-1 bg-transparent border border-gray-600 hover:border-purple-400 hover:bg-purple-400/10 text-gray-300 hover:text-white transition-all duration-300"
+                  <Button
                     onClick={() => window.open(project.github, '_blank')}
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 border-purple-400/50 text-purple-400 hover:bg-purple-400 hover:text-white transition-all duration-300"
                   >
                     <Github size={16} className="mr-2" />
                     Code
                   </Button>
-                  <Button 
+                  <Button
+                    onClick={() => window.open(project.live, '_blank')}
                     size="sm"
                     className="flex-1 bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white transition-all duration-300"
-                    onClick={() => window.open(project.live, '_blank')}
                   >
-                    <ArrowUp size={16} className="mr-2 rotate-45" />
-                    Live
+                    <ExternalLink size={16} className="mr-2" />
+                    Live Demo
                   </Button>
                 </div>
               </div>
@@ -109,13 +121,14 @@ const Projects = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <p className="text-gray-400 mb-4">Want to see more of my work?</p>
-          <Button 
-            className="bg-transparent border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+        <div className={`text-center mt-12 transition-all duration-1000 transform delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <Button
             onClick={() => window.open('https://github.com/ankampraneeth', '_blank')}
+            variant="outline"
+            className="border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
           >
-            View All Projects on GitHub
+            <Code size={20} className="mr-2" />
+            View All Projects
           </Button>
         </div>
       </div>

@@ -1,11 +1,14 @@
 
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   return (
-    <section id="about" className="py-20 px-6">
+    <section ref={ref} id="about" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Me</span>
           </h2>
@@ -13,7 +16,7 @@ const About = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 transform delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}>
             <div className="backdrop-blur-sm bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-purple-400/30 transition-all duration-300">
               <h3 className="text-2xl font-semibold text-white mb-4">Hello, I'm Praneeth!</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
@@ -28,7 +31,7 @@ const About = () => {
             </div>
           </div>
           
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 transform delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'}`}>
             <div className="backdrop-blur-sm bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
               <h4 className="text-xl font-semibold text-white mb-3">Education</h4>
               <p className="text-gray-300">

@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Blog = () => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   const articles = [
     {
       id: 1,
@@ -37,9 +40,9 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog" className="py-20 px-6">
+    <section ref={ref} id="blog" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Blog <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Articles</span>
           </h2>
@@ -53,8 +56,8 @@ const Blog = () => {
           {articles.map((article, index) => (
             <article 
               key={article.id}
-              className="group backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 cursor-pointer"
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`group backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 cursor-pointer transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+              style={{ transitionDelay: `${index * 200 + 300}ms` }}
               onClick={() => window.open(article.link, '_blank')}
             >
               <div className="relative overflow-hidden">

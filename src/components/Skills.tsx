@@ -1,7 +1,10 @@
 
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   const skills = [
     { name: 'HTML', level: 90, color: 'from-orange-500 to-red-500' },
     { name: 'CSS', level: 85, color: 'from-blue-500 to-cyan-500' },
@@ -20,9 +23,9 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-6">
+    <section ref={ref} id="skills" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Skills</span>
           </h2>
@@ -31,7 +34,7 @@ const Skills = () => {
         
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Skill Progress Bars */}
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 transform delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}>
             <h3 className="text-2xl font-semibold text-white mb-6">Technical Proficiency</h3>
             {skills.map((skill, index) => (
               <div key={skill.name} className="space-y-2">
@@ -41,10 +44,10 @@ const Skills = () => {
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-3">
                   <div 
-                    className={`h-3 bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
+                    className={`h-3 bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out ${isVisible ? 'w-full' : 'w-0'}`}
                     style={{ 
-                      width: `${skill.level}%`,
-                      animationDelay: `${index * 100}ms`
+                      width: isVisible ? `${skill.level}%` : '0%',
+                      transitionDelay: `${index * 100 + 500}ms`
                     }}
                   ></div>
                 </div>
@@ -53,14 +56,14 @@ const Skills = () => {
           </div>
           
           {/* Technology Tags */}
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 transform delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'}`}>
             <h3 className="text-2xl font-semibold text-white mb-6">Technologies & Tools</h3>
             <div className="flex flex-wrap gap-3">
               {technologies.map((tech, index) => (
                 <span 
                   key={tech}
-                  className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white rounded-full backdrop-blur-sm border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 cursor-default"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className={`px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-white rounded-full backdrop-blur-sm border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 cursor-default transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                  style={{ transitionDelay: `${index * 50 + 600}ms` }}
                 >
                   {tech}
                 </span>
