@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -19,7 +18,7 @@ const Skills = () => {
 
   const technologies = [
     'MongoDB', 'Express', 'React', 'Node.js', 'JavaScript', 'HTML5', 'CSS3', 
-    'Tailwind CSS', 'Git', 'GitHub', 'REST APIs', 'JSON', 'Bootstrap'
+    'Tailwind CSS', 'Git', 'GitHub', 'REST APIs', 'Bootstrap'
   ];
 
   return (
