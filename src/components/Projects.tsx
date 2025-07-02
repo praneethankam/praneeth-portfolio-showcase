@@ -10,32 +10,32 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce application built with MERN stack featuring user authentication, product management, shopping cart, and payment integration.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop&crop=center',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe', 'JWT'],
-      github: 'https://github.com/ankampraneeth/ecommerce-app',
-      live: 'https://ecommerce-demo.vercel.app',
+      title: 'Paste-App',
+      description: 'A minimalist web app to create, update, and view text pastes',
+      image: '../public/generated-image(2)',
+      technologies: ['React', 'Redux', 'Toolkit',' Tailwind CSS', 'Vite', 'React Router'],
+      github: 'https://github.com/praneethankam/PasteApp',
+      live: 'https://paste-app-six-psi.vercel.app/',
       featured: true
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop&crop=center',
-      technologies: ['React', 'Socket.io', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-      github: 'https://github.com/ankampraneeth/task-manager',
-      live: 'https://taskmanager-demo.vercel.app',
+      title: 'LeetMetric – LeetCode Stats Visualizer',
+      description: 'Built a responsive web app to fetch and display LeetCode stats via GraphQL, integrating Firebase analytics and CORS handling',
+      image: '../public/generated-image(3)',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'Firebase', 'GraphQL'],
+      github: 'https://github.com/praneethankam/Metrics_App',
+      live: 'metrics-2bf0d.web.app',
       featured: true
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A responsive weather application that provides real-time weather information, forecasts, and interactive maps using external APIs.',
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop&crop=center',
-      technologies: ['React', 'OpenWeather API', 'Chart.js', 'CSS3'],
+      title: 'Responsive Landing Page',
+      description: 'Developed a fully responsive landing page using modern UI/UX principles and component-based architecture',
+      image: '../public/generated-image(4)',
+      technologies: ['HTML' , 'CSS'],
       github: 'https://github.com/ankampraneeth/weather-app',
-      live: 'https://weather-dashboard-demo.vercel.app',
+      live: 'front-end-529c1.web.app',
       featured: false
     }
   ];
