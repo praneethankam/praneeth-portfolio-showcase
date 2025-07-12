@@ -36,7 +36,7 @@ const About = () => {
               <h4 className="text-xl font-semibold text-white mb-3">Education</h4>
               <p className="text-gray-300">
                 <span className="text-purple-400 font-semibold">Master of Computer Applications (MCA)</span><br />
-                Focused on software development, algorithms, and modern web technologies.
+                 graduate skilled in building full-stack applications with React, Node.js, and MongoDB
               </p>
             </div>
             

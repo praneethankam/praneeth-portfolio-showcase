@@ -4,17 +4,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 const Skills = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
-  const skills = [
-    { name: 'HTML', level: 90, color: 'from-orange-500 to-red-500' },
-    { name: 'CSS', level: 85, color: 'from-blue-500 to-cyan-500' },
-    { name: 'JavaScript', level: 80, color: 'from-yellow-500 to-orange-500' },
-    { name: 'React.js', level: 85, color: 'from-cyan-500 to-blue-500' },
-    { name: 'Node.js', level: 75, color: 'from-green-500 to-emerald-500' },
-    { name: 'Express.js', level: 80, color: 'from-gray-500 to-gray-700' },
-    { name: 'MongoDB', level: 75, color: 'from-green-600 to-green-800' },
-    { name: 'Git', level: 85, color: 'from-orange-600 to-red-600' },
-    { name: 'Tailwind CSS', level: 90, color: 'from-teal-500 to-cyan-500' },
-  ];
+  
 
   const technologies = [
     'MongoDB', 'Express', 'React', 'Node.js', 'JavaScript', 'HTML5', 'CSS3', 
@@ -31,28 +21,9 @@ const Skills = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 mx-auto rounded-full"></div>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-1">
           {/* Skill Progress Bars */}
-          <div className={`space-y-6 transition-all duration-1000 transform delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}>
-            <h3 className="text-2xl font-semibold text-white mb-6">Technical Proficiency</h3>
-            {skills.map((skill, index) => (
-              <div key={skill.name} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300 font-medium">{skill.name}</span>
-                  <span className="text-gray-400">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-3">
-                  <div 
-                    className={`h-3 bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out ${isVisible ? 'w-full' : 'w-0'}`}
-                    style={{ 
-                      width: isVisible ? `${skill.level}%` : '0%',
-                      transitionDelay: `${index * 100 + 500}ms`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+          
           
           {/* Technology Tags */}
           <div className={`space-y-6 transition-all duration-1000 transform delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'}`}>

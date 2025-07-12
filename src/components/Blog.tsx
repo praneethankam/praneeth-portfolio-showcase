@@ -1,42 +1,25 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
 
 const Blog = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const articles = [
     {
-      id: 1,
-      title: 'How I Built My First MERN Stack Project',
-      excerpt: 'A detailed walkthrough of my journey creating a full-stack application, from planning to deployment, including the challenges I faced and lessons learned.',
-      date: 'December 15, 2024',
-      readTime: '8 min read',
-      category: 'Development',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=250&fit=crop&crop=center',
-      link: '#'
-    },
-    {
-      id: 2,
-      title: 'What I Learned as an MCA Student',
-      excerpt: 'Reflecting on my Masters journey, the skills I developed, and how academic learning translates to real-world development projects.',
-      date: 'December 10, 2024',
-      readTime: '6 min read',
-      category: 'Education',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop&crop=center',
-      link: '#'
-    },
-    {
-      id: 3,
-      title: "Beginner's Guide to Node.js",
-      excerpt: 'Essential concepts every new Node.js developer should know, including event loops, modules, and building your first server.',
-      date: 'December 5, 2024',
-      readTime: '10 min read',
-      category: 'Tutorial',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop&crop=center',
-      link: '#'
-    }
+    id: 1,
+    title: 'Why I Chose the MERN Stack for Web Development',
+    excerpt: 'Here’s why I chose MongoDB, Express.js, React, and Node.js for my full-stack projects, and how it helped me grow as a developer.',
+    date: 'July 11, 2025',
+    readTime: '7 min read',
+    category: 'Development',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop&crop=center',
+    link: '/blog/why-mern' // This should point to the full post route
+  },
+   
   ];
 
   return (
@@ -52,15 +35,16 @@ const Blog = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-1  ">
           {articles.map((article, index) => (
-            <article 
+            <Link to={article.link} key={article.id} className="group transform transition-all duration-300 hover:scale-105">
+          <article 
               key={article.id}
-              className={`group backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 cursor-pointer transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+              className={`group backdrop-blur-sm bg-white/5 rounded-2xl  border border-white/10 overflow-hidden hover:border-purple-400/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 cursor-pointer transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
               style={{ transitionDelay: `${index * 200 + 300}ms` }}
-              onClick={() => window.open(article.link, '_blank')}
+             
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden ">
                 <img 
                   src={article.image} 
                   alt={article.title}
@@ -94,6 +78,7 @@ const Blog = () => {
                 </div>
               </div>
             </article>
+            </Link>
           ))}
         </div>
       </div>

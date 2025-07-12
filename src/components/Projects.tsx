@@ -10,33 +10,33 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Paste-App',
-      description: 'A minimalist web app to create, update, and view text pastes',
-      image: '/generated-image(2)',
-      technologies: ['React', 'Redux', 'Toolkit',' Tailwind CSS', 'Vite', 'React Router'],
-      github: 'https://github.com/praneethankam/PasteApp',
-      live: 'https://paste-app-six-psi.vercel.app/',
+      title: 'Airbnb Clone',
+      description: 'A full-stack Airbnb-like platform developed with Node.js, Express, MongoDB, and EJS. It includes user authentication, role-based access (Guest & Host), listing management with image/PDF uploads, and a responsive UI styled with TailwindCSS.s',
+      image: '/airbnb.png',
+      technologies: ['Node.js', 'Express', 'MongoDB', 'EJS', 'TailwindCSS', 'Multer'],
+      github: 'https://github.com/praneethankam/airbnb_homes',
+      live: 'https://airbnb-homes.onrender.com',
       featured: true
     },
     {
       id: 2,
-      title: 'LeetMetric – LeetCode Stats Visualizer',
-      description: 'Built a responsive web app to fetch and display LeetCode stats via GraphQL, integrating Firebase analytics and CORS handling',
-      image: '/generated-image(3)',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Firebase', 'GraphQL'],
-      github: 'https://github.com/praneethankam/Metrics_App',
-      live: 'metrics-2bf0d.web.app',
+      title: 'Todo-App',
+      description: 'A full-stack task management app built using the MERN stack. Users can add, edit, delete, and mark todos as complete. The app features a clean, responsive React frontend and a RESTful Node.js + Express backend with MongoDB for data persistence.',
+      image: '/todo_app.png',
+      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+      github: 'https://github.com/praneethankam/todo_app',
+      live: 'https://todo-app-xi-ten-77.vercel.app/',
       featured: true
     },
     {
       id: 3,
-      title: 'Responsive Landing Page',
-      description: 'Developed a fully responsive landing page using modern UI/UX principles and component-based architecture',
-      image: '/generated-image(4)',
-      technologies: ['HTML' , 'CSS'],
-      github: 'https://github.com/ankampraneeth/weather-app',
-      live: 'front-end-529c1.web.app',
-      featured: false
+      title: 'PASTE-APP',
+      description: 'A minimalist web app to create, update, and view text pastes Implemented global state with Redux Toolkit, toast-based user feedback, and responsive dark-themed UI using Tailwind CSS',
+      image: '/pasteapp.png',
+      technologies: ['React', 'Redux' ,'Toolkit', 'Tailwind CSS', 'Vite', 'React Router'],
+      github: 'https://github.com/praneethankam/PasteApp',
+      live: 'https://paste-app-six-psi.vercel.app/',
+      featured: true
     }
   ];
 
@@ -82,7 +82,7 @@ const Projects = () => {
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed min-h-40">
                   {project.description}
                 </p>
                 
@@ -123,7 +123,7 @@ const Projects = () => {
         
         <div className={`text-center mt-12 transition-all duration-1000 transform delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <Button
-            onClick={() => window.open('https://github.com/ankampraneeth', '_blank')}
+            onClick={() => window.open('https://github.com/praneethankam', '_blank')}
             variant="outline"
             className="border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
           >
